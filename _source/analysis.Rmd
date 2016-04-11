@@ -2,10 +2,6 @@
 title: "Titanic Survival Analysis"
 author: "Payam Bahreyni"
 date: 2016-03-21
-output: 
-  html_document: 
-    keep_md: yes
-    self_contained: no
 layout: post
 tags : [tutorial, machine learning]
 ---
@@ -14,6 +10,7 @@ tags : [tutorial, machine learning]
 
 ```{r package_options, include=FALSE}
 knitr::opts_knit$set(root.dir= "~/Documents/Projects/Data Camp - Titanic")
+knitr::opts_knit$set()
 ```
 
 ```{r}

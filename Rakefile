@@ -200,13 +200,7 @@ namespace :theme do
       else
         mkdir_p File.dirname(file_install_path)
         cp_r File.join(packaged_theme_path, filename), file_install_path
-      if File.exist? file_install_path
-        if ask("#{file_install_path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
-          next
-        end
       end
-      mkdir_p File.dirname(file_install_path)
-      cp_r File.join(packaged_theme_path, filename), file_install_path
     end
     
     puts "=> #{name} theme has been installed!"
