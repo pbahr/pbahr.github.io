@@ -7,15 +7,12 @@
     <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
     </div>
-    <div class="content">
-      {{ content }}
-    </div>
-
+    
   {% unless page.categories == empty %}
     <ul class="tag_box inline">
       <li><i class="glyphicon glyphicon-open"></i></li>
       {% assign categories_list = page.categories %}
-      {% include JB/categories_list %}
+      {% include JB/categories_list_2 %}
     </ul>
   {% endunless %}  
 
@@ -26,7 +23,11 @@
       {% include JB/tags_list %}
     </ul>
   {% endunless %}  
-  
+
+    <div class="content">
+      {{ content }}
+    </div>
+
     <hr>
     <ul class="pagination">
     {% if page.previous %}

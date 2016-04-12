@@ -13,7 +13,7 @@ title : Quantitative Life
 tagline: Measure It!
 author :
   name : Payam Bahreyni
-  email : pbahr@email.arizona.edy
+  email : pbahr@email.arizona.edu
   github : pbahr
   linkedin: pbahreyni
   #twitter : 
@@ -76,6 +76,9 @@ JB :
   tags_path : /tags.html
   atom_path : /atom.xml
   rss_path : /rss.xml
+  tips_path: /tips.html
+  tutorials_path: /tutorials.html
+  projects_path: /projects.html
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.

@@ -1,20 +1,23 @@
 ---
+layout: post
 title: "Titanic Survival Analysis"
 author: "Payam Bahreyni"
-date: 2016-03-21
-layout: post
-tags : [tutorial, machine learning]
+date: 2016-03-22
+categories: [tutorials]
+tags : [machine learning]
 ---
 
 ## Loading Data & Initial Analysis
 
 ```{r package_options, include=FALSE}
 knitr::opts_knit$set(root.dir= "~/Documents/Projects/Data Camp - Titanic")
-knitr::opts_knit$set()
+```
+
+```{r, message=FALSE, warning=FALSE}
+source("library.R")
 ```
 
 ```{r}
-source("library.R")
 # Load data
 train.data <- read.csv("input/train.csv", stringsAsFactors = F)
 test.data <- read.csv("input/test.csv", stringsAsFactors = F)
