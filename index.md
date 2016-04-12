@@ -19,8 +19,8 @@ At this point, it was pretty clear to me that I would love to combine my technic
 
 ## Purpose of This Blog
 
-It's been a while that I'm doing diverse projects in quantitative analysis and data science, mostly as part of my coursework in [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science). I follow two main goals for this blog. The first one is to keep track of what I have done and the decisions made along the way. The code will be available through [my GitHub account](https://github.com/pbahr), and I always seek comments and advice on these projects. Please feel free to reach out if you had any questions or comments on these projects.
+It's been a while that I'm doing diverse projects in quantitative analysis and data science, mostly as part of my coursework in [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science). I follow two main goals for this blog. The first one is to keep track of what I have done and the decisions made along the way. The code will be available through [GitHub](https://github.com/pbahr), and I always seek your comments and advices on these projects. Please feel free to reach out if you had any questions or comments on these projects.
 
-The second and more important goal is to give back to the community. I hope to pave the road for aspirant data scientists and quantitative analysts to get started in their journey, by sharing my experience and pointers to the resources I found valuable.
+The second and more important goal is to give back to the community. I hope to pave the road for aspirant data scientists and quantitative analysts to get started in their journey, by sharing my experience and pointers to the resources I deemed valuable.
 
 Once again, I'm glad you're here with me and look forward to your comments.
