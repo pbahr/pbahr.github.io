@@ -2,7 +2,10 @@
 layout: page
 title: Welcome to Quantitative Life!
 tagline: Measure First, Improve Next
+description: A blog containing tip and tricks, step-by-step tutorials, and project descriptions on data analytics, data analysis, machine learning, and data science in general
 ---
+{% include JB/setup %}
+
 I'm glad to see you here. My name is Payam Bahreyni and I will be talking about interesting topics here, which usually happen to be mostly quantitative. Although I love number crunching, I'd like to do it in a practical way and in general, I prefer understanding concepts by intuition and learning them by doing, rather than deep diving into the math equations behind them. So, if you would prefer to apply concept to solve problems instead of working on the proof for the math theorems and algorithms you have come to the right place.
 
 ## Short Bio
@@ -22,5 +25,7 @@ At this point, it was pretty clear to me that I would love to combine my technic
 It's been a while that I'm doing diverse projects in quantitative analysis and data science, mostly as part of my coursework in [Coursera Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science). I follow two main goals for this blog. The first one is to keep track of what I have done and the decisions made along the way. The code will be available through [GitHub](https://github.com/pbahr), and I always seek your comments and advices on these projects. Please feel free to reach out if you had any questions or comments on these projects.
 
 The second and more important goal is to give back to the community. I hope to pave the road for aspirant data scientists and quantitative analysts to get started in their journey, by sharing my experience and pointers to the resources I deemed valuable.
+
+I provide the description and discussions around the [Projects]({{BASE_PATH}}{{site.JB.projects_path}}) I have worked on. You will find step-by-step instructions in the [Tutorials]({{BASE_PATH}}{{site.JB.tutorials_path}}) section and quick fixes and workarounds in the [Tips and Tricks]({{BASE_PATH}}{{site.JB.tips_path}}).
 
 Once again, I'm glad you're here with me and look forward to your comments.

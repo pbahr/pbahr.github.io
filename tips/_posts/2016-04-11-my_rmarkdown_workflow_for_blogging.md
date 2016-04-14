@@ -2,7 +2,8 @@
 layout: post
 title:  "My R Markdown Workflow for Blogging"
 categories: [tips]
-tags: [knitr, servr, jekyll, blogging]
+tags: [blogging, jekyll, knitr, markdown, r, servr]
+description: In this post, I explain how to make your R markdown (.Rmd files) work as your blog post using knitr, servr, jekyll, and some tips and tricks.
 ---
 
 After getting started my blog using Jekyll[^1], I started to wonder how tu setup a process to go from R markdown to blog post seamlessly. I came across the knitr-jekyll[^2] project, which had a similar purpose. The suggested process from knitr-jekyll project is detailed [here]({% post_url 2014-09-28-jekyll-with-knitr%}).
@@ -21,15 +22,16 @@ Below, is what I could come up with:
 ### Regular Steps
 
 1. Copy finalized Rmd file from the original project to _source directory.
+2. Make sure you are using Jekyll's file naming conventions.
 2. Front Matter (The header of the markdown file) modifications:
-    * Remove output tag
+    * Remove `output` tag
     * Change data format to appropriate format (YYYY-MM-DD, in my case)
-    * Add layout tag
-    * Add categories, tags, if you like
-3. run `servr::jekyll()` command. I know it's somtimes tricky to get it work.
+    * Add `layout` tag
+    * Add `categories`, `tags`, etc. if you like
+3. run `servr::jekyll()` command. I know it's sometimes tricky to get it to work.
 4. Step 3 builds an .md file from your .Rmd and puts it in the _posts directory.
-5. Check if the new post locally. (Stop your RStudio Jekyll process, if needed and run your local Jekyll to test)
-6. Commit and push to Github.io if eveything looks OK.
+5. Check if the new post works locally. (Stop your RStudio Jekyll process, if needed and run your local Jekyll to test)
+6. Commit and push to Github.io if everything looks OK.
 
 ## References
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  ""
-categories: [tips]
+categories: [projects]
 tags: []
 description:
 ---

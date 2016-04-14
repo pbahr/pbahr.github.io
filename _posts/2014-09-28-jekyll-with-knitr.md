@@ -2,7 +2,7 @@
 layout: post
 title:  "Serve Jekyll Websites with servr and knitr"
 categories: [tips]
-tags: [knitr, servr, jekyll, rstats]
+tags: [jekyll, knitr, markdown, r, rstats, servr]
 ---
 
 [***Note:***] This is originally from [**Yihui**](https://github.com/yihui/), kept here as a great example and reference on how to write markup.
