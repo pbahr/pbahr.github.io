@@ -6,7 +6,7 @@ tags: [blogging, jekyll, knitr, markdown, r, servr]
 description: In this post, I explain how to make your R markdown (.Rmd files) work as your blog post using knitr, servr, jekyll, and some tips and tricks.
 ---
 
-After getting started my blog using Jekyll[^1], I started to wonder how tu setup a process to go from R markdown to blog post seamlessly. I came across the knitr-jekyll[^2] project, which had a similar purpose. The suggested process from knitr-jekyll project is detailed [here]({% post_url 2014-09-28-jekyll-with-knitr%}).
+After getting started my blog using Jekyll[^1], I started to wonder how tu setup a process to go from R markdown to blog post seamlessly. I came across the knitr-jekyll[^2] project, which had a similar purpose. The suggested process from knitr-jekyll project is detailed [here](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html){:target="_blank"}.
 
 I had slighly different requirements, so I had to make a few modifications. Some of these issues and their solutions are discussed by others[^3] before.
 
