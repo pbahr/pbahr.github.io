@@ -18,6 +18,7 @@ Below, is what I could come up with:
 
 1. Copy Build.R file from knitr-jekyll project to my github.io project.
 2. Create _source directory in the github.io project.
+3. The syntax highlighting was not working as I'd like to out-of-the-box. My Jekyll setup uses Rouge as syntax highlighter and Rouge is compatible with Pygments stylesheets. So, you can pick your favorite style from [richleland's pygment-css](http://richleland.github.io/pygments-css/) project, download it to your css folder and add it to your pages. One more thing, these css files are designed with `codehilite` tag, which should be replaced by your css style for highlight, `highlight` in my case.
 
 ### Regular Steps
 

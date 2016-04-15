@@ -21,7 +21,22 @@ h1, h2, h3, h4 {
   background-color: #fdcd60;
 }
 
+/* Added by Payam to style codeblocks , 4/15/2016*/
+pre.lineno {background-color: #fff}
 
+figure>pre {
+    background-color: #fcfcfc;
+    border: 1px dotted #ccc;
+    margin: 0;
+    padding-top:0;
+    padding-bottom:0;
+}
+
+.code pre {
+    border: none;
+    background-color: #fcfcfc;
+}
+/* End of Add*/
 
 /* posts index */
 .post > h3.title {
