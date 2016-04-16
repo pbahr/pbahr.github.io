@@ -38,6 +38,9 @@ figure>pre {
 }
 /* End of Add*/
 
+.content {
+    margin-top: 10px;
+}
 /* posts index */
 .post > h3.title {
   position: relative;
