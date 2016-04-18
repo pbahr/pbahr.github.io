@@ -11,7 +11,7 @@ Rmd files use the directory they reside in as the base directory. `setwd()` does
 
 ### Solution
 @yihui has added root.dir option [^2]. You can set this option in one of your chunks and all the paths in the other chunks will be evaluated relative to this directory. This is how to do it:
-
+ 
 {% highlight r%}
 knitr::opts_knit$set(root.dir = 'relative_path_to_root_from_Rmd' )
 {% endhighlight %}
