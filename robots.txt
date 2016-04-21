@@ -6,4 +6,4 @@ layout: null
 {% include JB/setup %}
 
 User-agent: *
-Sitemap: {{ production_url }}/sitemap.xml
+Sitemap: {{ site.production_url }}/sitemap.xml
