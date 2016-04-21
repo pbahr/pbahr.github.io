@@ -9,6 +9,8 @@ highlighter: rouge
 # Added to use GitHub @ Mentions
 gems:
   - jekyll-mentions
+# Added as recommended by Github 04/20/16 https://help.github.com/articles/sitemaps-for-github-pages/
+  - jekyll-sitemap
   
 # Added to support fenced codeblocks in markdown, 04/15/2016
 #markdown: redcarpet
