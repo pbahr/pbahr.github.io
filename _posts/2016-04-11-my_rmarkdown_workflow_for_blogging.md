@@ -2,7 +2,7 @@
 layout: post
 title:  "My R Markdown Workflow for Blogging"
 categories: [tips]
-tags: [blogging, jekyll, knitr, markdown, r, servr]
+tags: [Blogging, Jekyll, knitr, Markdown, RMarkdown, Rmd, R, servr]
 description: In this post, I explain how to make your R markdown (.Rmd files) work as your blog post using knitr, servr, jekyll, and some tips and tricks.
 ---
 

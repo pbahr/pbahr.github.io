@@ -2,7 +2,7 @@
 layout: post
 title:  "Setting Working Directory Inside R Markdown (.Rmd) Files"
 categories: [tips]
-tags: [rmarkdown, rmd, setwd, knitr]
+tags: [RMarkdown, Rmd, setwd, knitr]
 description:
 ---
 ### Problem

@@ -4,7 +4,7 @@ title: "Titanic Survival Analysis"
 author: "Payam Bahreyni"
 date: 2016-03-22
 categories: [tutorials]
-tags : [machine learning]
+tags : [Machine Learning]
 ---
 
 ## Loading Data & Initial Analysis

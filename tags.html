@@ -5,19 +5,39 @@ header: Posts By Tag
 group: navigation
 order: 4
 ---
+<!-- Updated from https://github.com/LanyonM/lanyonm.github.io/blob/master/tags.html -->
 {% include JB/setup %}
 
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+<!-- site_tags: {{ site_tags }} -->
+{% assign tag_words = site_tags | split:',' | sort %}
+<!-- tag_words: {{ tag_words }} -->
+
 <ul class="tag_box inline">
-  {% assign tags_list = site.tags | sort%}  
-  {% include JB/tags_list %}
+  {% for tag in tag_words) %}
+    <li><a href="#{{ tag | cgi_escape }}-ref">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
+  {% endfor %}
 </ul>
 
-
-{%  assign tags = site.tags | sort %}
-{%    for tag in tags %} 
-  <h2 id="{{ tag[0] }}-ref">{{ tag[0] | capitalize}}</h2>
+{% for item in (0..site.tags.size) %}
+    {% unless forloop.last %}
+    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+  
+  <h2 id="{{ this_word | cgi_escape }}-ref">{{this_word}}</h2>
   <ul>
-    {% assign pages_list = tag[1] %}  
-    {% include JB/pages_list %}
+    {% for post in site.tags[this_word] %}
+        {% if post.title != null %}
+        <li itemscope>
+            <span class="entry-date">
+                <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+                    {{ post.date | date: "%B %d, %Y" }}
+                </time>
+            </span> &raquo; 
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <ul class="tag_box inline"><li><a href="{{BASE_PATH}}/{{post.categories[0]}}">{{post.categories[0]}}</a></li> </ul>
+        </li>
+        {% endif %}
+    {% endfor %}  
   </ul>
+  {% endunless %}
 {% endfor %}
