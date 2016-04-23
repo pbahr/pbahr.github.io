@@ -85,9 +85,9 @@ JB :
   tags_path : /tags.html
   atom_path : /atom.xml
   rss_path : /rss.xml
-  tips_path: /tips.html
-  tutorials_path: /tutorials.html
-  projects_path: /projects.html
+  tips_path: /tips/
+  tutorials_path: /tutorials/
+  projects_path: /projects/
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.
