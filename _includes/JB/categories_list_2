@@ -22,7 +22,7 @@ Usage:
 {% else %}
   {% if categories_list.first[0] == null %}
     {% for category in categories_list %} 
-    	<li><a href="{{ BASE_PATH }}/{{ category }}">
+    	<li><a href="{{ BASE_PATH }}/{{ category }}/">
     		{{ category | join: "/" }} <span>{{ site.categories[category].size }}</span>
     	</a></li>
     {% endfor %}
