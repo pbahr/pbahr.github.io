@@ -17,6 +17,7 @@ description:
 
 ###Links
 
-* Project URL: [](https://github.com/pbahr/)
+ * Project Repository: [](https://github.com/pbahr/)  
+ * Code and Comments: [Detailed Documentation](http://htmlpreview.github.io/?http://github.com/pbahr/.html)
 
 ### References
