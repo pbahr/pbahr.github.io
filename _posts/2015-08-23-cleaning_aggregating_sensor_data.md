@@ -46,7 +46,8 @@ There are two types on sensors used in this experiement, accelerometer and gyros
 
 Finally a Fast Fourier Transform (FFT) was applied to some of these signals. The feature names and the transformations involved are detailed in the [features_info](https://github.com/pbahr/aggregating_UCI_HAR_sensor_data/blob/master/UCI%20HAR%20Dataset/features_info.txt) file.
 
-###Links
+### Links
+
  * Project Repository: [Cleaning and Aggregating UCI HAR Sensor Data](https://github.com/pbahr/aggregating_UCI_HAR_sensor_data)  
  * Code and Comments: [Detailed Documentation](http://htmlpreview.github.io/?http://github.com/pbahr/aggregating_UCI_HAR_sensor_data/blob/master/reports/analysis.html)
 

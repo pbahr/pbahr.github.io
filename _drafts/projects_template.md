@@ -15,7 +15,7 @@ description:
 
 ### Challenge
 
-###Links
+### Links
 
  * Project Repository: [](https://github.com/pbahr/)  
  * Code and Comments: [Detailed Documentation](http://htmlpreview.github.io/?http://github.com/pbahr/.html)
