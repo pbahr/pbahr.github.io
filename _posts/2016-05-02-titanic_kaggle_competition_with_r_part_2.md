@@ -17,6 +17,8 @@ output:
 
 ## Machine Learning
 
+In [part 1]({% post_url 2016-04-25-titanic_kaggle_competition_with_r_part_1 %}) of this tutorial, we analyzed the data and prepared it for machine learning. Now, we are ready for some action.
+
 ### Quick Intro
 
 We are interested in predicting an **outcome (response)** variable, given the other **features (predictors)** of our data points. This is called **supervised learning**, there is a set of oucomes in the training data to **learn** from and there will be a **result** for each given data point at the end. This is in contrast to **unsupervised learning**, where there is no response variable and the observations are grouped together based on a measure of similarity.
@@ -325,4 +327,4 @@ We have a more detailed tree this time. Age especially matters among class 3 fem
 
 We have an increase in accuracy for training data compared to using `Sex`, `Pclass`, and `Fare` from 81.03 to 81.71, but when submitted to Kaggle the score was .74641 as opposed to .78469 we had before. What is going on here?
 
-We will look into this issue in part 3.
+We will look into this issue in [part 3]({% post_url 2016-05-09-titanic_kaggle_competition_with_r_part_3 %}).

@@ -15,6 +15,8 @@ output:
 
 
 
+In [part 2]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2%}), we tried different models to predict passenger survival on Titanic. We know that an increase in training accurracy, does not always result in increase in the Kaggle score. Herein, we discuss more details.
+
 ## Overfitting & Cross-validation
 
 In the machine learning practice, we are intersted in predictive models capable of predicting something in the real world. We'd like to *predict* something given all we know about the instance. So, our models should be capable of being generalized to cover real-world scenarios.
@@ -460,3 +462,5 @@ write.csv(sex.class.fare.age.solution, file= "output/new versions/sex_class_fare
 This time we get slightly lower training accuracy than the model without `Fare`. Our Kaggle score has improved to 0.7799 even with a smaller tree of depth 5 as compared to a depth of 8 we had before.
 
 It should be noted that the best score we have had upto this point is for the model using `Sex`, `Pclass`, and `Fare`. My guess is that it is because of inherent errors in imputing missing values for `Age`.
+
+I look forward to writing the next parts of this series.

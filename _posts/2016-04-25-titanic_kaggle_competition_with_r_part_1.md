@@ -524,7 +524,7 @@ t.test(Fare ~ Survived, data= train.data, subset = train.data$Pclass.factor == "
 
 So, we see that in class 1, the difference in fare is statistiscally significant between passengers who survived and who didn't . Maybe the rich found a way to buy lifeboats :).
 
-In part 2, we will start doing machine learning and submit our first prediction to Kaggle!
+In [part 2]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2 %}), we will start doing machine learning and submit our first prediction to Kaggle!
 
 ## References and Footnotes
 
