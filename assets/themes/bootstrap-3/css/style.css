@@ -128,7 +128,7 @@ figure>pre {
 }
 
 table {
-/*    margin-bottom: 20px; */
+    margin-bottom: 5px;
     border-collapse: collapse;
     display: table;
     border-color: grey;
