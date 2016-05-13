@@ -24,10 +24,18 @@ h1, h2, h3, h4 {
 /* Added by Payam to style codeblocks , 4/15/2016*/
 pre.lineno {background-color: #fff}
 
+pre {
+    margin: 0px;
+}
+
+figure {
+    margin-bottom: 10px;
+}
+
 figure>pre {
     background-color: #fcfcfc;
     border: 1px dotted #ccc;
-    margin: 0;
+    margin: 0px;
     padding-top:0;
     padding-bottom:0;
 }
@@ -117,4 +125,33 @@ figure>pre {
 .zocial.linkedin:focus,
 .zocial.github:hover {
   color: #4078c0 !important;
+}
+
+table {
+/*    margin-bottom: 20px; */
+    border-collapse: collapse;
+    display: table;
+    border-color: grey;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+td, th {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
 }
