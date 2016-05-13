@@ -10,6 +10,13 @@ output:
     toc: yes
 ---
 
+## Tutorial Table of Contents
+
+* **Part 1**: Knowing and Preparing the Data
+* **Part 2**: [Learning From Data]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2 %})
+* **Part 3**: [Selecting and Tuning the Model]({% post_url 2016-05-09-titanic_kaggle_competition_with_r_part_3 %})
+<hr />
+
 ## Context
 
 There is a famous "Getting Started" machine learning competition on Kaggle, called [Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic). It is just there for us to experiment with the data and the different algorithms and to measure our progress against benchmarks. We are given the data about passengers of Titanic. Our goal is to predict which passengers survived the tragedy.

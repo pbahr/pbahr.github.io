@@ -15,6 +15,13 @@ output:
 
 
 
+## Tutorial Table of Contents
+
+* **Part 1**: [Knowing and Preparing the Data]({% post_url 2016-04-25-titanic_kaggle_competition_with_r_part_1 %})
+* **Part 2**: Learning From Data
+* **Part 3**: [Selecting and Tuning the Model]({% post_url 2016-05-09-titanic_kaggle_competition_with_r_part_3 %})
+<hr />
+
 ## Machine Learning
 
 In [part 1]({% post_url 2016-04-25-titanic_kaggle_competition_with_r_part_1 %}) of this tutorial, we analyzed the data and prepared it for machine learning. Now, we are ready for some action.

@@ -15,6 +15,13 @@ output:
 
 
 
+## Tutorial Table of Contents
+
+* **Part 1**: [Knowing and Preparing the Data]({% post_url 2016-04-25-titanic_kaggle_competition_with_r_part_1 %})
+* **Part 2**: [Learning From Data]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2 %})
+* **Part 3**: Selecting and Tuning the Model
+<hr />
+
 In [part 2]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2%}), we tried different models to predict passenger survival on Titanic. We know that an increase in training accurracy, does not always result in increase in the Kaggle score. Herein, we discuss more details.
 
 ## Overfitting & Cross-validation
