@@ -18,7 +18,7 @@ Below, is what I could come up with:
 
 1. Copy Build.R file from knitr-jekyll project to my github.io project.
 2. Create _source directory in the github.io project.
-3. The syntax highlighting was not working as I'd like to out-of-the-box. My Jekyll setup uses Rouge as syntax highlighter and Rouge is compatible with Pygments stylesheets. So, you can pick your favorite style from [richleland's pygment-css](http://richleland.github.io/pygments-css/) project, download it to your css folder and add it to your pages. One more thing, these css files are designed with `codehilite` tag, which should be replaced by your css style for highlight, `highlight` in my case.
+3. The syntax highlighting was not working as I'd like to out-of-the-box. My Jekyll setup uses Rouge as the syntax highlighter and Rouge is compatible with Pygments stylesheets. So, you can pick your favorite style from [richleland's pygment-css](http://richleland.github.io/pygments-css/) project, download it to your css folder and add it to your pages. One more thing, these css files are designed with `codehilite` tag, which should be replaced by your css style for highlight, `highlight` in my case.
 
 ### Regular Steps
 
@@ -29,8 +29,8 @@ Below, is what I could come up with:
     * Change data format to appropriate format (YYYY-MM-DD, in my case)
     * Add `layout` tag
     * Add `categories`, `tags`, etc. if you like
-3. run `servr::jekyll()` command. I know it's sometimes tricky to get it to work.
-4. Step 3 builds an .md file from your .Rmd and puts it in the _posts directory.
+3. Run `servr::jekyll()` command. I know it's sometimes tricky to get it to work.
+4. The last step builds an .md file from your .Rmd and puts it in the _posts directory.
 5. Check if the new post works locally. (Stop your RStudio Jekyll process, if needed and run your local Jekyll to test)
 6. Commit and push to Github.io if everything looks OK.
 
