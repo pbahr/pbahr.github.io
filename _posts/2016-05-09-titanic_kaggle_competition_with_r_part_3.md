@@ -10,11 +10,6 @@ output:
     toc: yes
 ---
 
-
-
-
-
-
 ## Tutorial Table of Contents
 
 * **Part 1**: [Knowing and Preparing the Data]({% post_url 2016-04-25-titanic_kaggle_competition_with_r_part_1 %})
@@ -23,6 +18,12 @@ output:
 <hr />
 
 In [part 2]({% post_url 2016-05-02-titanic_kaggle_competition_with_r_part_2%}), we tried different models to predict passenger survival on Titanic. We know that an increase in training accurracy, does not always result in increase in the Kaggle score. Herein, we discuss more details.
+
+
+
+
+
+
 
 ## Overfitting & Cross-validation
 
@@ -38,6 +39,7 @@ One of the popular methods of cross validation is K-fold cross validation. In th
 
 
 {% highlight r linenos %}
+set.seed(100)
 cvCtrl <- trainControl(method= "cv", number = 10) # use 10-fold cross validation
 sex.class.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Age, 
                             data= train.data.impute, method= "rpart",
@@ -70,13 +72,13 @@ print.train(sex.class.age.tree)
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 802, 802, 802, 802, 801, 803, ... 
+## Summary of sample sizes: 801, 802, 802, 802, 801, 802, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cp          Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   0.01754386  0.7787189  0.5249494  0.04416875   0.09320387
-##   0.01949318  0.7764717  0.5199655  0.04168930   0.08853944
-##   0.44444444  0.6994311  0.2851155  0.07529678   0.24749698
+##   0.01754386  0.7812189  0.5274347  0.02995344   0.06533745
+##   0.01949318  0.7755882  0.5136375  0.02902230   0.06529576
+##   0.44444444  0.6854835  0.2363187  0.07256908   0.25009530
 ## 
 ## Accuracy was used to select the optimal model using  the
 ##  largest value.
@@ -127,7 +129,7 @@ Another parameter to control the training behavior is `tuneLength`, which tells 
 
 {% highlight r linenos %}
 cvCtrl <- trainControl(method= "cv", number = 10)
-sex.class.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Age, 
+sex.class.age.tree.cv <- train(Survived ~ Sex.factor + Pclass.factor + Age, 
                             data= train.data.impute, method= "rpart",
                             trControl= cvCtrl,
                             tuneLength= 5)
@@ -135,13 +137,13 @@ sex.class.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Age,
 
 
 {% highlight r linenos %}
-plot.train(sex.class.age.tree)
+plot.train(sex.class.age.tree.cv)
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-5](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-5-1.png) 
 
 {% highlight r linenos %}
-print.train(sex.class.age.tree)
+print.train(sex.class.age.tree.cv)
 {% endhighlight %}
 
 
@@ -155,15 +157,15 @@ print.train(sex.class.age.tree)
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 802, 802, 801, 801, 803, 802, ... 
+## Summary of sample sizes: 802, 801, 802, 802, 803, 801, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cp           Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   0.003654971  0.8104824  0.5906400  0.05059508   0.10916542
-##   0.005847953  0.8138659  0.5925945  0.05209365   0.11362365
-##   0.017543860  0.7812927  0.5287542  0.05152307   0.10568062
-##   0.019493177  0.7767983  0.5185902  0.04676792   0.09669188
-##   0.444444444  0.7048635  0.2951663  0.07967502   0.26103823
+##   0.003654971  0.8013174  0.5712676  0.02974081   0.06310653
+##   0.005847953  0.8103067  0.5846073  0.02935917   0.06355443
+##   0.017543860  0.7721797  0.5076753  0.02739884   0.07483216
+##   0.019493177  0.7699197  0.5007175  0.02710966   0.07336329
+##   0.444444444  0.7103816  0.3041572  0.07976966   0.26233191
 ## 
 ## Accuracy was used to select the optimal model using  the
 ##  largest value.
@@ -174,15 +176,15 @@ As we see in the output, `5` different trees with different `cp`s have been trie
 
 
 {% highlight r linenos %}
-plot.decision.tree(sex.class.age.tree$finalModel)
+plot.decision.tree(sex.class.age.tree.cv$finalModel)
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-6](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-6-1.png) 
 
 
 {% highlight r linenos %}
-sex.class.age.survival <- predict(sex.class.age.tree, train.data.impute)
-conMat <- confusionMatrix(sex.class.age.survival, train.data.impute$Survived)
+sex.class.age.survival.cv <- predict(sex.class.age.tree.cv, train.data.impute)
+conMat <- confusionMatrix(sex.class.age.survival.cv, train.data.impute$Survived)
 {% endhighlight %}
 
 
@@ -214,18 +216,20 @@ percent(conMat$overall["Accuracy"])
 
 
 {% highlight r linenos %}
-sex.class.age.tl.solution <- get.solution(sex.class.age.tree, test.data.impute)
+sex.class.age.solution.cv <- get.solution(sex.class.age.tree.cv, test.data.impute)
 
 if(!file.exists("output/new versions/sex_class_age_tl_cv.csv"))
-    write.csv(sex.class.age.tl.solution, file= "output/new versions/sex_class_age_tl_cv.csv" , row.names= FALSE)
+    write.csv(sex.class.age.solution.cv, 
+              file= "output/new versions/sex_class_age_tl_cv.csv", 
+              row.names= FALSE)
 {% endhighlight %}
 
-Compared to our last `sex.class.age.tree` we have **both** higher training accuracy (84.18%) *and* better Kaggle score (0.75598). What if we continue increasing `tuneLength`?
+So, we went from 81.71% in training accuracy to 83.05%. Now, we have **both** higher *training* accuracy *and* better Kaggle score (0.75598). What if we continue increasing `tuneLength`?
 
 
 {% highlight r linenos %}
 cvCtrl <- trainControl(method= "cv", number = 10)
-sex.class.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Age, 
+sex.class.age.tree.cv.tl <- train(Survived ~ Sex.factor + Pclass.factor + Age, 
                             data= train.data.impute, method= "rpart",
                             trControl= cvCtrl,
                             tuneLength= 10)
@@ -233,13 +237,13 @@ sex.class.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Age,
 
 
 {% highlight r linenos %}
-plot.train(sex.class.age.tree)
+plot.train(sex.class.age.tree.cv.tl)
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-8](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-8-1.png) 
 
 {% highlight r linenos %}
-print.train(sex.class.age.tree)
+print.train(sex.class.age.tree.cv.tl)
 {% endhighlight %}
 
 
@@ -253,20 +257,20 @@ print.train(sex.class.age.tree)
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 802, 802, 802, 803, 802, 801, ... 
+## Summary of sample sizes: 802, 802, 802, 802, 802, 802, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cp          Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   0.00000000  0.8238412  0.6222064  0.05171043   0.10660279
-##   0.04938272  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.09876543  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.14814815  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.19753086  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.24691358  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.29629630  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.34567901  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.39506173  0.7868239  0.5417912  0.03245147   0.07181552
-##   0.44444444  0.6901901  0.2446715  0.08101274   0.26126230
+##   0.00000000  0.8147815  0.5996698  0.03377014   0.07021752
+##   0.04938272  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.09876543  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.14814815  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.19753086  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.24691358  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.29629630  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.34567901  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.39506173  0.7868165  0.5417724  0.03337273   0.07249247
+##   0.44444444  0.6710861  0.1859201  0.07272003   0.24110245
 ## 
 ## Accuracy was used to select the optimal model using  the
 ##  largest value.
@@ -276,12 +280,58 @@ print.train(sex.class.age.tree)
 
 
 {% highlight r linenos %}
-plot.decision.tree(sex.class.age.tree$finalModel)
+plot.decision.tree(sex.class.age.tree.cv.tl$finalModel)
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-8](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-8-2.png) 
 
-We may get too many similar trees that won't help. The result is a complete tree with branches not pruned and some nodes too sepcific. So, it is not always a good idea to try a lot of different trees.
+
+
+{% highlight r linenos %}
+sex.class.age.survival.cv.tl <- predict(sex.class.age.tree.cv.tl, train.data.impute)
+conMat <- confusionMatrix(sex.class.age.survival.cv.tl, train.data.impute$Survived)
+{% endhighlight %}
+
+
+{% highlight r linenos %}
+conMat$table
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##           Reference
+## Prediction   0   1
+##          0 486  64
+##          1  63 278
+{% endhighlight %}
+
+
+
+{% highlight r linenos %}
+percent(conMat$overall["Accuracy"])
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Accuracy 
+##    85.75
+{% endhighlight %}
+
+
+{% highlight r linenos %}
+sex.class.age.solution.cv.tl <- get.solution(sex.class.age.tree.cv.tl, test.data.impute)
+
+if(!file.exists("output/new versions/sex_class_age_tl_cv_10.csv"))
+    write.csv(sex.class.age.solution.cv, 
+              file= "output/new versions/sex_class_age_tl_cv_10.csv" , 
+              row.names= FALSE)
+{% endhighlight %}
+
+When submitted to Kaggle, our increased *training* accuracy (85.75%) did not translate to increased Kaggle score, as we could expect. This is another example of **overfitting**, where our model couldn't be generalized to accurately predict survival for unknown test data.
+
+So, in general it is not advisable to maximize `tuneLength`, because high values may result in overfitting, as we may get too many similar trees that won't help. The result in this case is a complete tree with branches not pruned and some nodes too sepcific.
 
 ## Putting it together
 
@@ -290,7 +340,7 @@ Let's bring `Fare` back with all the tuning in place.
 
 {% highlight r linenos %}
 cvCtrl <- trainControl(method= "cv", number = 10)
-sex.class.fare.age.tree <- train(Survived ~ Sex + Pclass + Fare + Age, 
+sex.class.fare.age.tree <- train(Survived ~ Sex.factor + Pclass.factor + Fare + Age, 
                                  data= train.data.impute, method= "rpart",
                                  trControl= cvCtrl,
                                  tuneLength= 5)
@@ -330,104 +380,24 @@ percent(conMat$overall["Accuracy"])
 
 {% highlight r linenos %}
 plot.decision.tree(sex.class.fare.age.tree$finalModel)
-{% endhighlight %}
-
-![plot of chunk unnamed-chunk-9](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-9-1.png) 
-
-
-{% highlight r linenos %}
-sex.class.fare.age.solution <- get.solution(sex.class.fare.age.tree, test.data.impute)
-write.csv(sex.class.fare.age.solution, file= "output/new versions/sex_class_fare_age_cv_tl.csv" , row.names= FALSE)
-{% endhighlight %}
-
-
-{% highlight r linenos %}
-plot.train(sex.class.fare.age.tree)
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-10](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-10-1.png) 
 
-{% highlight r linenos %}
-print.train(sex.class.fare.age.tree)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## CART 
-## 
-## 891 samples
-##  14 predictor
-##   2 classes: '0', '1' 
-## 
-## No pre-processing
-## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 801, 802, 802, 802, 802, 802, ... 
-## Resampling results across tuning parameters:
-## 
-##   cp          Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   0.00877193  0.8102321  0.5877584  0.02782632   0.05804027
-##   0.01461988  0.8045758  0.5727552  0.03785584   0.08719859
-##   0.02046784  0.8011664  0.5710380  0.04142650   0.08729472
-##   0.03070175  0.7866221  0.5409911  0.03946421   0.08365380
-##   0.44444444  0.7039255  0.2974281  0.08055357   0.26199359
-## 
-## Accuracy was used to select the optimal model using  the
-##  largest value.
-## The final value used for the model was cp = 0.00877193.
-{% endhighlight %}
-
-
-
-.75598
-
 
 {% highlight r linenos %}
-sex.class.fare.age.tree <- train(Survived ~ Sex + Pclass + Fare + Age, 
-                                 data= train.data.impute, method= "rpart",
-                                 trControl= cvCtrl,
-                                 tuneLength= 5)
+sex.class.fare.age.solution <- get.solution(sex.class.fare.age.tree, test.data.impute)
 
-sex.class.fare.age.survival <- predict(sex.class.fare.age.tree, train.data.impute)
-conMat <- confusionMatrix(sex.class.fare.age.survival, train.data.impute$Survived)
-conMat$table
+write.csv(sex.class.fare.age.solution, 
+          file= "output/new versions/sex_class_fare_age_cv_tl.csv" , row.names= F)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-##           Reference
-## Prediction   0   1
-##          0 497  91
-##          1  52 251
-{% endhighlight %}
-
-
-
-{% highlight r linenos %}
-percent(conMat$overall["Accuracy"])
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Accuracy 
-##    83.95
-{% endhighlight %}
-
-
-
-{% highlight r linenos %}
-plot.decision.tree(sex.class.fare.age.tree$finalModel)
-{% endhighlight %}
-
-![plot of chunk unnamed-chunk-12](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-12-1.png) 
 
 {% highlight r linenos %}
 plot.train(sex.class.fare.age.tree)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-12](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-12-2.png) 
+![plot of chunk unnamed-chunk-11](/figure/source/2016-05-09-titanic_kaggle_competition_with_r_part_3/unnamed-chunk-11-1.png) 
 
 {% highlight r linenos %}
 print.train(sex.class.fare.age.tree)
@@ -444,30 +414,21 @@ print.train(sex.class.fare.age.tree)
 ## 
 ## No pre-processing
 ## Resampling: Cross-Validated (10 fold) 
-## Summary of sample sizes: 802, 802, 802, 802, 801, 801, ... 
+## Summary of sample sizes: 802, 802, 802, 802, 802, 802, ... 
 ## Resampling results across tuning parameters:
 ## 
 ##   cp          Accuracy   Kappa      Accuracy SD  Kappa SD  
-##   0.00877193  0.8249648  0.6182833  0.03437089   0.07644665
-##   0.01461988  0.8170996  0.6058558  0.03711911   0.08132032
-##   0.02046784  0.8070247  0.5817373  0.04340037   0.09911763
-##   0.03070175  0.7913063  0.5495555  0.05164865   0.11283711
-##   0.44444444  0.6812388  0.2272669  0.07289580   0.24558983
+##   0.00877193  0.8148689  0.5954804  0.04310355   0.10092410
+##   0.01461988  0.8137203  0.5962228  0.04669299   0.10468162
+##   0.02046784  0.8092509  0.5874807  0.04173675   0.09049861
+##   0.03070175  0.7878901  0.5425921  0.03053194   0.06971850
+##   0.44444444  0.7238577  0.3533356  0.07676797   0.24606106
 ## 
 ## Accuracy was used to select the optimal model using  the
 ##  largest value.
 ## The final value used for the model was cp = 0.00877193.
 {% endhighlight %}
 
+This time we get better training accuracy than that of the model without `Fare` (83.95% compared to 83.05%). Our Kaggle score has improved to 0.7799 from 0.75598.
 
-
-{% highlight r linenos %}
-sex.class.fare.age.solution <- get.solution(sex.class.fare.age.tree, test.data.impute)
-write.csv(sex.class.fare.age.solution, file= "output/new versions/sex_class_fare_age_cv_5.csv" , row.names= FALSE)
-{% endhighlight %}
-
-This time we get slightly lower training accuracy than the model without `Fare`. Our Kaggle score has improved to 0.7799 even with a smaller tree of depth 5 as compared to a depth of 8 we had before.
-
-It should be noted that the best score we have had upto this point is for the model using `Sex`, `Pclass`, and `Fare`. My guess is that it is because of inherent errors in imputing missing values for `Age`.
-
-I look forward to writing the next parts of this series.
+It should be noted that the best score we have had up to this point is for the model using `Sex`, `Pclass`, and `Fare`. I guess that it is because of the inherent errors in imputing the missing values for `Age`. I will discuss different strategies for imputing the missing values and compare their results. So, see you next time.
