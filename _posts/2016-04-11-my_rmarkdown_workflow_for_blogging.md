@@ -6,19 +6,19 @@ tags: [Blogging, Jekyll, knitr, Markdown, RMarkdown, Rmd, R, servr]
 description: In this post, I explain how to make your R markdown (.Rmd files) work as your blog post using knitr, servr, jekyll, and some tips and tricks.
 ---
 
-After getting started my blog using Jekyll[^1], I started to wonder how tu setup a process to go from R markdown to blog post seamlessly. I came across the knitr-jekyll[^2] project, which had a similar purpose. The suggested process from knitr-jekyll project is detailed [here](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html){:target="_blank"}.
+After getting my blog started using Jekyll[^1], I started to wonder how to setup a process to go seamlessly from R markdown to blog post. I came across the knitr-jekyll[^2] project, which had a similar purpose. The suggested process from knitr-jekyll project is detailed [here](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html){:target="_blank"}.
 
 I had slighly different requirements, so I had to make a few modifications. Some of these issues and their solutions are discussed by others[^3] before.
 
-First of all, I prefer to generate the first round of html (or other outputs) using the default format of R markdown and check the results in RStudio. Secondly, I would like the original markdown files reside by their respective projects.
+First of all, I prefer to generate the first round of html (or other outputs) using the default format of R markdown and check the results in RStudio. Secondly, I would prefer the original markdown files to reside inside their respective projects.
 
-Below, is what I could come up with:
+Below is what I could come up with:
 
 ### One-time steps
 
 1. Copy Build.R file from knitr-jekyll project to my github.io project.
 2. Create _source directory in the github.io project.
-3. The syntax highlighting was not working as I'd like to out-of-the-box. My Jekyll setup uses Rouge as the syntax highlighter and Rouge is compatible with Pygments stylesheets. So, you can pick your favorite style from [richleland's pygment-css](http://richleland.github.io/pygments-css/) project, download it to your css folder and add it to your pages. One more thing, these css files are designed with `codehilite` tag, which should be replaced by your css style for highlight, `highlight` in my case.
+3. The syntax highlighting was not working as I'd like to out-of-the-box. My Jekyll setup uses Rouge as the syntax highlighter and Rouge is compatible with Pygments stylesheets. So, one can pick her favorite style from [richleland's pygment-css](http://richleland.github.io/pygments-css/) project, download it to your css folder and add it to the pages. One more thing, these css files are designed with `codehilite` tag, which should be replaced by your css style for highlight, `highlight` in my case.
 
 ### Regular Steps
 
