@@ -4,4 +4,6 @@ source 'https://rubygems.org'
 #require 'open-uri'
 #versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
-gem 'github-pages'#, versions['github-pages']
+# commented on 2025-11-06
+#gem 'github-pages'#, versions['github-pages']
+gem "github-pages", group: :jekyll_plugins
