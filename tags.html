@@ -14,7 +14,7 @@ order: 4
 <!-- tag_words: {{ tag_words }} -->
 
 <ul class="tag_box inline">
-  {% for tag in tag_words) %}
+  {% for tag in tag_words %}
     <li><a href="#{{ tag | cgi_escape }}-ref">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
   {% endfor %}
 </ul>

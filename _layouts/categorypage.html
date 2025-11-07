@@ -6,7 +6,7 @@ layout: page
   {% assign categories = page.categories %}
   {% for cat in categories %}
   <ul>
-    {% assign pages_list = site.categories.[cat] %}  
+    {% assign pages_list = site.categories[cat] %}  
     {% include JB/pages_list %}
   </ul>
   
