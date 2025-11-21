@@ -1,0 +1,286 @@
+/* =========================================================
+   Custom Minima Theme
+   Default: Dark Mode with Burnt Orange accent (#e66a00)
+   Light Mode: Activated via prefers-color-scheme
+   ========================================================= */
+
+/* ---------- Base (dark mode default) ---------- */
+
+/* =========================================================
+   Custom Minima Theme with Toggle Support
+   Default = Dark Mode
+   ========================================================= */
+
+:root,
+:root[data-theme="dark"] {
+  --bg-color: #1b1b1b;
+  --text-color: #eaeaea;
+  --brand-color: #e66a00;
+  --link-hover: #ff8c1a;
+  --border-color: #333;
+  --code-bg: #2d2d2d;
+  --code-text: #d0d0d0;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --brand-color: #e66a00;
+  --link-hover: #ff8c1a;
+  --border-color: #ddd;
+  --code-bg: #f6f6f6;
+  --code-text: #222;
+}
+
+/* ...keep the rest of your CSS from before (body, headers, links, etc.) ... */
+
+
+/* ---------- Global styles ---------- */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+/* Links */
+a {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  text-shadow: 0 0 6px rgba(230, 106, 0, 0.5);
+}
+
+/* Header and nav */
+.site-header {
+  background-color: #111;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.site-title,
+.site-title:visited {
+  color: var(--text-color);
+}
+
+.site-nav .page-link {
+  color: var(--text-color);
+}
+
+/* Footer */
+.site-footer {
+  color: var(--text-color);
+  background-color: #111;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Posts */
+.post-title {
+  color: var(--text-color);
+}
+
+.post-content h2 {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Code blocks */
+pre, code {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+}
+
+/* Blockquotes */
+blockquote {
+  color: #ccc;
+  border-left: 4px solid var(--brand-color);
+}
+
+/* Horizontal rule */
+hr {
+  border-color: var(--border-color);
+}
+
+/* Tables */
+table {
+  border-color: var(--border-color);
+}
+
+th {
+  background-color: #222;
+  color: var(--text-color);
+}
+
+td {
+  background-color: #1c1c1c;
+  color: var(--text-color);
+}
+
+/* ---------- Light mode override ---------- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --brand-color: #e66a00;
+    --link-hover: #ff8c1a;
+    --border-color: #ddd;
+    --code-bg: #f6f6f6;
+    --code-text: #222;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  .site-header, .site-footer {
+    background-color: #fafafa;
+    border-color: var(--border-color);
+  }
+
+  a:hover {
+    text-shadow: 0 0 6px rgba(230, 106, 0, 0.5);
+  }
+
+  blockquote {
+    color: #555;
+    border-left: 4px solid var(--brand-color);
+  }
+
+  th, td {
+    background-color: #fff;
+    color: var(--text-color);
+  }
+
+  pre, code {
+    background-color: var(--code-bg);
+    color: var(--code-text);
+  }
+}
+
+/* =========================================================
+   Theme consistency across header, footer, and content
+   ========================================================= */
+
+/* Use theme background for all major sections */
+body,
+.site-header,
+.site-footer,
+.page-content {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Border colors that respond to theme */
+.site-header,
+.site-footer {
+  border-color: var(--border-color) !important;
+}
+
+/* Links inside header/footer */
+.site-header a,
+.site-footer a {
+  color: var(--brand-color);
+}
+
+/* Make sure nav and title also update text color */
+.site-title,
+.site-title:visited,
+.site-nav .page-link {
+  color: var(--text-color) !important;
+}
+
+/* Smooth transitions */
+body,
+.site-header,
+.site-footer,
+.page-content {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================================
+   Syntax Highlighting for Light & Dark Themes
+   ========================================================= */
+
+.highlight {
+  background: var(--code-bg);
+  color: var(--code-text);
+  border-radius: 6px;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+/* Generic code styles */
+code, pre {
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+/* Rouge token color overrides */
+.highlight .c     { color: #999; font-style: italic; } /* Comment */
+.highlight .k     { color: #e66a00; font-weight: bold; } /* Keyword */
+.highlight .o     { color: #ff8c1a; } /* Operator */
+.highlight .p     { color: var(--text-color); } /* Punctuation */
+.highlight .cm    { color: #888; font-style: italic; } /* Comment.Multiline */
+.highlight .cp    { color: #ff8c1a; } /* Comment.Preproc */
+.highlight .c1    { color: #999; font-style: italic; } /* Comment.Single */
+.highlight .cs    { color: #999; font-style: italic; } /* Comment.Special */
+.highlight .gd    { color: #e66a00; background-color: rgba(230, 106, 0, 0.1); } /* Deleted */
+.highlight .gi    { color: #00cc66; background-color: rgba(0, 255, 128, 0.05); } /* Inserted */
+.highlight .ge    { font-style: italic; }
+.highlight .gr    { color: #ff5555; }
+.highlight .gh    { color: #999; font-weight: bold; }
+.highlight .go    { color: #888; }
+.highlight .gp    { color: #999; }
+.highlight .gs    { font-weight: bold; }
+.highlight .gu    { color: #aaa; font-weight: bold; }
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr     { color: #e66a00; font-weight: bold; } /* Keywords */
+.highlight .kt     { color: #e66a00; } /* Data types */
+.highlight .na     { color: #ffcc66; } /* Attribute name */
+.highlight .nb     { color: #66ccff; } /* Builtin name */
+.highlight .nc     { color: #ff8c1a; } /* Class */
+.highlight .no     { color: #ffcc66; } /* Constant */
+.highlight .nd     { color: #66ccff; } /* Decorator */
+.highlight .ne,
+.highlight .nf     { color: #ffcc66; } /* Function */
+.highlight .nv     { color: #66ccff; } /* Variable */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss,
+.highlight .sx,
+.highlight .s1,
+.highlight .s2     { color: #f2a65a; } /* Strings */
+
+/* Light mode tweak */
+[data-theme="light"] .highlight {
+  background: var(--code-bg);
+  color: var(--code-text);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .highlight .k,
+[data-theme="light"] .highlight .kt {
+  color: #d35a00;
+}
+
+[data-theme="light"] .highlight .s1,
+[data-theme="light"] .highlight .s2 {
+  color: #b45f06;
+}

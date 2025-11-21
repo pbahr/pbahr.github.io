@@ -1,0 +1,45 @@
+<button id="color-mode-toggle" aria-label="Toggle color mode">
+  <span id="color-mode-icon">🌙</span>
+</button>
+
+<style>
+  #color-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+  }
+  #color-mode-toggle:hover {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  (() => {
+    const toggle = document.getElementById("color-mode-toggle");
+    const icon = document.getElementById("color-mode-icon");
+    const root = document.documentElement;
+
+    const setTheme = (theme) => {
+      root.dataset.theme = theme;
+	  document.body.dataset.theme = theme; // add this line
+      localStorage.setItem("theme", theme);
+      icon.textContent = theme === "dark" ? "🌞":"🌙";
+    };
+
+    // Load saved preference or system default
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = saved || (prefersDark ? "dark" : "light");
+    setTheme(initial);
+
+    toggle.addEventListener("click", () => {
+      const newTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      setTheme(newTheme);
+    });
+  })();
+</script>
+
