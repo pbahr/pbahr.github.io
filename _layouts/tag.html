@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h1>Tag: {{ page.tag }}</h1>
+
+<ul>
+  {% for post in site.tags[page.tag] %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,20 @@
+---
+layout: default
+title: Tutorials
+category: tutorials
+permalink: /tutorials/
+---
+
+<h1>{{ page.title }}</h1>
+
+<ul>
+  {% assign category = page.category %}
+  {% for post in site.posts %}
+    {% if post.category == category %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
