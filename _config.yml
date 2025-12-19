@@ -41,3 +41,8 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+collections:
+  archive:
+    output: true
+    permalink: /archive/:name/
